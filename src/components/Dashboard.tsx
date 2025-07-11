@@ -7,6 +7,9 @@ import { RepositoryCard } from "./RepositoryCard";
 import { ActivityFeed } from "./ActivityFeed";
 import { AIAssistant } from "./AIAssistant";
 import { CommunityDiscovery } from "./CommunityDiscovery";
+import { Discovery } from "./Discovery";
+import { Collaboration } from "./Collaboration";
+import { PullRequests } from "./PullRequests";
 import { 
   GitBranch, 
   Star, 
@@ -125,9 +128,12 @@ export function Dashboard() {
       {/* Main Content Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
         <div className="flex items-center justify-between">
-          <TabsList className="grid w-full max-w-md grid-cols-4">
+          <TabsList className="grid w-full max-w-full grid-cols-7">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="repositories">Repositories</TabsTrigger>
+            <TabsTrigger value="discovery">Discovery</TabsTrigger>
+            <TabsTrigger value="collaboration">Collaboration</TabsTrigger>
+            <TabsTrigger value="pull-requests">Pull Requests</TabsTrigger>
             <TabsTrigger value="community">Community</TabsTrigger>
             <TabsTrigger value="ai-assistant">AI Assistant</TabsTrigger>
           </TabsList>
@@ -213,6 +219,18 @@ export function Dashboard() {
               <RepositoryCard key={repo.id} repository={repo} detailed={true} />
             ))}
           </div>
+        </TabsContent>
+
+        <TabsContent value="discovery" className="space-y-6">
+          <Discovery />
+        </TabsContent>
+
+        <TabsContent value="collaboration" className="space-y-6">
+          <Collaboration />
+        </TabsContent>
+
+        <TabsContent value="pull-requests" className="space-y-6">
+          <PullRequests />
         </TabsContent>
 
         <TabsContent value="community" className="space-y-6">
